@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+type MyInt int
+
 func main() {
-	fmt.Println("Hello World")
+	var i interface{}
+	var mine MyInt
+	i = mine
+	i2 := i.(MyInt)
+	fmt.Println(i2 + 1)
 }
