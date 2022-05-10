@@ -2,21 +2,30 @@ package main
 
 import "fmt"
 
-type MyInt int
-
-type MyFunc func(message string)
-
-func Log(message string) {
-	fmt.Println("Hello ", message)
+func main() {
+	input := []int{1, 1, 0, 1, 1, 1}
+	fmt.Println(findMaxConsecutiveOnes(input))
 }
 
-func main() {
-	var i interface{}
-	var mine MyInt
-	i = mine
-	i2 := i.(MyInt)
-	fmt.Println(i2 + 1)
+// https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3238/
 
-	myfunc := MyFunc(Log)
-	myfunc("Abhi")
+func findMaxConsecutiveOnes(nums []int) int {
+	maxCount := 0
+	for i := 0; i < len(nums); i++ {
+		count := 0
+		if nums[i] == 1 {
+			count++
+			for j := i + 1; j < len(nums); j++ {
+				if nums[j] == 1 {
+					count++
+				} else {
+					break
+				}
+			}
+			if maxCount < count {
+				maxCount = count
+			}
+		}
+	}
+	return maxCount
 }
