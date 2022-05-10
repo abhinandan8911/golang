@@ -1,7 +1,7 @@
 package main
 
 import (
-	"arrays"
+	"github.com/abhinandan8911/golang/arrays"
 	"fmt"
 )
 
